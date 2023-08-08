@@ -189,7 +189,7 @@ pub fn Generator(
                     };
 
                     // Add to state transition table
-                    const to = @intCast(u32, idx);
+                    const to = @as(u32, @intCast(idx));
                     const old = switch (locus) {
                         .t => |t| trans.t.fetchPut(t, to),
                         .nt => |nt| trans.nt.fetchPut(nt, to),
@@ -247,7 +247,7 @@ pub fn Generator(
                 for (self.rules.get(locus), 0..) |_, j| {
                     const new_item = Item{
                         .nt = locus,
-                        .rule = @intCast(u32, j),
+                        .rule = @as(u32, @intCast(j)),
                         .index = 0,
                         .next = next,
                     };
