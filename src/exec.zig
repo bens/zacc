@@ -78,6 +78,7 @@ pub fn Executor(
         }
 
         const max_pop = blk: {
+            @setEvalBranchQuota(100000);
             var max: u32 = 0;
             for (tables.action) |action_map| {
                 for (action_map.values) |action| {
